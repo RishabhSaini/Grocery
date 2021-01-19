@@ -17,3 +17,7 @@ user_collection = pymongo.collection.Collection(db, 'users')
 def get_current_time():
     print(db.list_collection_names())
     return {'time' : time.time()}
+
+@app.route('/hello')
+def send_api():
+    return {'hello' : 'world'}
