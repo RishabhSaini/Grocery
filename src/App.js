@@ -1,10 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Login from "./components/Login";
+import Profile from "./components/Profile";
 import Signup from "./components/Signup";
+import AuthRoute from "./components/AuthRoute";
 
 export default function App() {
+ 
+  
+
   return (
     <Router>
       <div className="App">
@@ -34,8 +39,15 @@ export default function App() {
           <div className="auth-inner">
             <Switch>
               <Route exact path="/" component={Login} />
-              <Route path="/login" component={Login} />
+              <Route
+                path="/login"
+                component={Login}
+              />
               <Route path="/signup" component={Signup} />
+              <Route
+                path="/profile"
+                component={Profile}
+              />
             </Switch>
           </div>
         </div>

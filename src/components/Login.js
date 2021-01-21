@@ -1,9 +1,20 @@
 import React, { useState } from "react";
+import {
+  useHistory,
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from "react-router-dom";
 import "./logUp.css";
 
-const Login = () => {
+const Login = ({callfromParent}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [allowLogin, setAllowLogin] = useState(false);
+
+  let history = useHistory();
 
   const onSubmitClick = (e) => {
     e.preventDefault();
@@ -22,7 +33,12 @@ const Login = () => {
       .then((r) => {
         return r.json();
       })
-      .then((resp) => console.log(resp.result));
+      .then((resp) => {
+        if (resp.result.allowLogin) {
+          setAllowLogin(true);
+        
+        }
+      });
   };
 
   const handleEmailChange = (e) => {
@@ -34,6 +50,7 @@ const Login = () => {
   };
   return (
     <form>
+      {allowLogin ? <Redirect to="/profile" /> : <Redirect to="/login" />}
       <h3>Log In</h3>
 
       <div className="form-group">

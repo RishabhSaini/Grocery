@@ -54,9 +54,9 @@ def login():
                 'lastName': response['lastName'],
                 'email': response['email']
             })
-            result = {'token':access_token}
+            result = {'token':access_token, "allowLogin" : True}
         else:
-            result = {"error":"Invalid username and password"}
+            result = {"error":"Invalid username and password", "allowLogin" : False}
     else:
-        result = {"result":"No results found"}
+        result = {"result":"No results found", "allowLogin" : False}
     return {"result" : result} 
