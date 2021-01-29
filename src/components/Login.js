@@ -1,20 +1,11 @@
 import React, { useState } from "react";
-import {
-  useHistory,
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Redirect } from "react-router-dom";
 import "./logUp.css";
 
-const Login = ({callfromParent}) => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [allowLogin, setAllowLogin] = useState(false);
-
-  let history = useHistory();
 
   const onSubmitClick = (e) => {
     e.preventDefault();
@@ -34,9 +25,9 @@ const Login = ({callfromParent}) => {
         return r.json();
       })
       .then((resp) => {
+        localStorage.setItem("token", resp.result.token);
         if (resp.result.allowLogin) {
           setAllowLogin(true);
-        
         }
       });
   };
