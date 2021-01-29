@@ -35,7 +35,8 @@ def signup():
         'lastName': lastName,
         'email': email,
         'password': password,
-        'created' : created
+        'created' : created,
+        'cart' : {'initial' : 'empty'}
     })
     confirmUser = users_Collection.find_one({'_id' : userID})
     result = {'email' : confirmUser['email'] + ' registered'}
