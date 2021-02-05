@@ -5,7 +5,6 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
-import env from "react-dotenv";
 
 const Maps = () => {
   const [selected, setSelected] = useState({});
@@ -82,7 +81,7 @@ const Maps = () => {
   ];
 
   return (
-    <LoadScript googleMapsApiKey={env.maps_URL}>
+    <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY}>
       <GoogleMap
         mapContainerStyle={mapStyles}
         zoom={13}
