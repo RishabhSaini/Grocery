@@ -42,62 +42,66 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <form>
-        <h3>Sign Up</h3>
+    <div className="auth-wrapper">
+      <div className="auth-inner">
+        <div>
+          <form>
+            <h3>Sign Up</h3>
 
-        <div className="form-group">
-          <label>First name</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="First name"
-            onChange={handleFirstNameChange}
-            value={firstName}
-          />
+            <div className="form-group">
+              <label>First name</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="First name"
+                onChange={handleFirstNameChange}
+                value={firstName}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Last name</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Last name"
+                onChange={handleLastNameChange}
+                value={lastName}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Email address</label>
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Enter email"
+                onChange={handleEmailChange}
+                value={email}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Password</label>
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Enter password"
+                onChange={handlePasswordChange}
+                value={password}
+              />
+            </div>
+
+            <button
+              type="submit"
+              onClick={onSubmitClick}
+              className="btn btn-primary btn-block"
+            >
+              Sign Up
+            </button>
+          </form>
         </div>
-
-        <div className="form-group">
-          <label>Last name</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Last name"
-            onChange={handleLastNameChange}
-            value={lastName}
-          />
-        </div>
-
-        <div className="form-group">
-          <label>Email address</label>
-          <input
-            type="email"
-            className="form-control"
-            placeholder="Enter email"
-            onChange={handleEmailChange}
-            value={email}
-          />
-        </div>
-
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Enter password"
-            onChange={handlePasswordChange}
-            value={password}
-          />
-        </div>
-
-        <button
-          type="submit"
-          onClick={onSubmitClick}
-          className="btn btn-primary btn-block"
-        >
-          Sign Up
-        </button>
-      </form>
+      </div>
     </div>
   );
 };

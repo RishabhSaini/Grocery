@@ -6,6 +6,10 @@ from datetime import datetime
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager 
 from flask_jwt_extended import create_access_token
+import time
+
+import serial
+#ser = serial.Serial("/dev/ttyACM0")
 
 app = Flask(__name__)
 
@@ -18,10 +22,26 @@ client = pymongo.MongoClient(os.getenv("MONGO_CONNECTION"))
 db = client.get_database('grocery')
 users_Collection = pymongo.collection.Collection(db, 'users')
 
+
 # @app.route('/time')
 # def get_current_time():
 #     print(db.list_collection_names())
 #     return {'time' : time.time()}
+
+@app.route('/runArduino', methods=['POST'])
+def arduino():
+    connect = request.get_json()['connect']
+    result = 'check failed'
+    if(connect):
+        ser.write(b'a')
+        current = time.time()
+        while(current + 5):
+            ardOut = ser.read_until(expected=b'012')
+            if(ardOut == b'012'):
+                result = 'physical auth succeded'
+                return {"result" : result}
+    return {"result" : result}
+
 
 @app.route('/signup', methods=['POST'])
 def signup():

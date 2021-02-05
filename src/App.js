@@ -5,11 +5,9 @@ import Login from "./components/Login";
 import Profile from "./components/Profile";
 import Signup from "./components/Signup";
 import AuthRoute from "./components/AuthRoute";
+import Maps from "./components/Maps";
 
 export default function App() {
- 
-  
-
   return (
     <Router>
       <div className="App">
@@ -35,22 +33,13 @@ export default function App() {
           </div>
         </nav>
 
-        <div className="auth-wrapper">
-          <div className="auth-inner">
-            <Switch>
-              <Route exact path="/" component={Login} />
-              <Route
-                path="/login"
-                component={Login}
-              />
-              <Route path="/signup" component={Signup} />
-              <Route
-                path="/profile"
-                component={Profile}
-              />
-            </Switch>
-          </div>
-        </div>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/maps" component={Maps} />
+        </Switch>
       </div>
     </Router>
   );
